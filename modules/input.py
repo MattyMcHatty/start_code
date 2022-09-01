@@ -5,3 +5,8 @@ def select_an_option():
 def is_task_complete_input():
     description = input("Enter task description to search for: ")
     return description
+
+def create_task_input():
+    description = input("Enter description: ")
+    time_taken = int(input("Enter time taken: "))
+    return description, time_taken

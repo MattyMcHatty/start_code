@@ -1,8 +1,12 @@
 
 from modules.task_list import *
 from modules.output import *
-from data.task_list import *
 from modules.input import *
+import_task = input('Would you like to import your previously created tasks? (y/n)')
+if import_task == 'y':
+    from data.task_list import *
+else:
+    tasks = []
 
 while (True):
     print_menu()
@@ -29,11 +33,13 @@ while (True):
         time = int(input("Enter task duration: "))
         print_list(get_tasks_taking_at_least(tasks, time))
     elif option == '6':
-        description = input("Enter task description to search for: ")
+        description = is_task_complete_input()
+        # description = input("Enter task description to search for: ")
         print(get_task_with_description(tasks, description))
     elif option == '7':
-        description = input("Enter description: ")
-        time_taken = int(input("Enter time taken: "))
+        # description = input("Enter description: ")
+        # time_taken = int(input("Enter time taken: "))
+        description, time_taken = create_task_input()
         task = create_task(description, time_taken)
         tasks.append(task)
     else:
